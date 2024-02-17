@@ -1,0 +1,9 @@
+model: "pt_mamba"
+trans_dim: 384
+depth: 12
+drop_path_rate: 0.1
+rms_norm: False
+use_cls_token: False
+drop_path: 0.2
+drop_out: 0.
+fetch_idx: [3, 7, 11]
