@@ -14,6 +14,8 @@
 
 (\*) equal contribution
 
+ArXiv ([arXiv:2402.10739](https://arxiv.org/abs/2402.10739))
+
 </div>
 
 
@@ -115,6 +117,19 @@ CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --ckpts <pat
 ## To Do
 - [x] Release code.
 - [x] Release checkpoints.
+- [ ] Semantic segmentation.
 ## Acknowledgement
 
 This project is based on Point-BERT ([paper](https://arxiv.org/abs/2111.14819), [code](https://github.com/lulutang0608/Point-BERT?tab=readme-ov-file)), Point-MAE ([paper](https://arxiv.org/abs/2203.06604), [code](https://github.com/Pang-Yatian/Point-MAE)), Mamba ([paper](https://arxiv.org/abs/2312.00752), [code](https://github.com/state-spaces/mamba)), Causal-Conv1d ([code](https://github.com/Dao-AILab/causal-conv1d)). Thanks for their wonderful works.
+
+## Citation
+
+If you find this repository useful in your research, please consider giving a star ⭐ and a citation
+```bibtex
+@article{liang2024pointmamba,
+      title={PointMamba: A Simple State Space Model for Point Cloud Analysis}, 
+      author={Dingkang Liang and Xin Zhou and Xinyu Wang and Xingkui Zhu and Wei Xu and Zhikang Zou and Xiaoqing Ye and Xiang Bai},
+      journal={arXiv preprint arXiv:2402.10739},
+      year={2024}
+}
+```
