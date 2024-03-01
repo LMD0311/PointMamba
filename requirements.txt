@@ -3,7 +3,7 @@ easydict
 h5py
 matplotlib
 numpy
-open3d==1.10.0
+open3d==0.18.0
 opencv-python
 pyyaml
 scipy
