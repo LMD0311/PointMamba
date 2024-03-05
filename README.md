@@ -19,7 +19,7 @@ ArXiv ([arXiv:2402.10739](https://arxiv.org/abs/2402.10739))
 </div>
 
 ## 📣 News
-- **[05/Mar/2024]**  Our paper **DAPT ([github](https://github.com/LMD0311/DAPT))** is accepted by **CVPR 2024**! 🥳🥳🥳Check it out an leave a star 🌟!
+- **[05/Mar/2024]**  Our paper **DAPT ([github](https://github.com/LMD0311/DAPT))** has been accepted by **CVPR 2024**! 🥳🥳🥳 Check it out and give it a star 🌟!
 
 ## Abstract
 
