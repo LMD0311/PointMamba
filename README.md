@@ -76,8 +76,8 @@ $ conda activate pointmamba
 (pointmamba) $ pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
 
 # Mamba
-(pointmamba) $ pip install causal-conv1d>=1.1.0
-(pointmamba) $ pip install mamba-ssm
+(pointmamba) $ pip install causal-conv1d==1.1.1
+(pointmamba) $ pip install mamba-ssm==1.1.1
 ```
 
 ### Datasets
@@ -118,6 +118,7 @@ CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --ckpts <pat
 ## To Do
 - [x] Release code.
 - [x] Release checkpoints.
+- [x] ModelNet40.
 - [ ] Semantic segmentation.
 ## Acknowledgement
 
