@@ -14,7 +14,7 @@
 
 (\*) equal contribution
 
-[![arXiv](https://img.shields.io/badge/Arxiv-2403.09394-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2402.10739)
+[![arXiv](https://img.shields.io/badge/Arxiv-2402.10739-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2402.10739)
 [![Zhihu](https://img.shields.io/badge/Intro-zhihu-blue.svg)](https://zhuanlan.zhihu.com/p/687191399)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLMD0311%2FPointMamba&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 [![GitHub issues](https://img.shields.io/github/issues/LMD0311/PointMamba?color=critical&label=Issues)](https://github.com/LMD0311/PointMamba/issues?q=is%3Aopen+is%3Aissue)
