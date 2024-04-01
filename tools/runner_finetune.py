@@ -18,13 +18,25 @@ from matplotlib import pyplot as plt
 
 train_transforms = transforms.Compose(
     [
-        # data_transforms.PointcloudScale(),
-        # data_transforms.PointcloudRotate(),
-        # data_transforms.PointcloudTranslate(),
-        # data_transforms.PointcloudJitter(),
-        # data_transforms.PointcloudRandomInputDropout(),
-        # data_transforms.RandomHorizontalFlip(),
-        data_transforms.PointcloudScaleAndTranslate(),
+         # data_transforms.PointcloudScale(),
+         data_transforms.PointcloudRotate(),
+         # data_transforms.PointcloudTranslate(),
+         # data_transforms.PointcloudJitter(),
+         # data_transforms.PointcloudRandomInputDropout(),
+         # data_transforms.RandomHorizontalFlip(),
+         # data_transforms.PointcloudScaleAndTranslate(),
+    ]
+)
+
+train_transforms_raw = transforms.Compose(
+    [
+         # data_transforms.PointcloudScale(),
+         # data_transforms.PointcloudRotate(),
+         # data_transforms.PointcloudTranslate(),
+         # data_transforms.PointcloudJitter(),
+         # data_transforms.PointcloudRandomInputDropout(),
+         # data_transforms.RandomHorizontalFlip(),
+         data_transforms.PointcloudScaleAndTranslate(),
     ]
 )
 
@@ -153,7 +165,10 @@ def run_net(args, config, train_writer=None, val_writer=None):
             fps_idx = fps_idx[:, np.random.choice(point_all, npoints, False)]
             points = pointnet2_utils.gather_operation(points.transpose(1, 2).contiguous(), fps_idx).transpose(1,
                                                                                                               2).contiguous()  # (B, N, 3)
-            points = train_transforms(points)
+            if 'scan' in args.config:
+                points = train_transforms(points)
+            else:
+                points = train_transforms_raw(points)
             ret = base_model(points)
             loss, acc = base_model.module.get_loss_acc(ret, label)
             _loss = loss
@@ -388,17 +403,19 @@ def test(base_model, test_dataloader, args, config, logger=None):
         acc = (test_pred == test_label).sum() / float(test_label.size(0)) * 100.
         print_log('[TEST] acc = %.4f' % acc, logger=logger)
 
-        if args.distributed:
-            torch.cuda.synchronize()
+        if args.vote:
 
-        print_log(f"[TEST_VOTE]", logger=logger)
-        acc = 0.
-        for time in range(1, 300):
-            this_acc = test_vote(base_model, test_dataloader, 1, None, args, config, logger=logger, times=10)
-            if acc < this_acc:
-                acc = this_acc
-            print_log('[TEST_VOTE_time %d]  acc = %.4f, best acc = %.4f' % (time, this_acc, acc), logger=logger)
-        print_log('[TEST_VOTE] acc = %.4f' % acc, logger=logger)
+            if args.distributed:
+                torch.cuda.synchronize()
+
+            print_log(f"[TEST_VOTE]", logger = logger)
+            acc = 0.
+            for time in range(1, 300):
+                this_acc = test_vote(base_model, test_dataloader, 1, None, args, config, logger=logger, times=10)
+                if acc < this_acc:
+                    acc = this_acc
+                print_log('[TEST_VOTE_time %d]  acc = %.4f, best acc = %.4f' % (time, this_acc, acc), logger=logger)
+            print_log('[TEST_VOTE] acc = %.4f' % acc, logger=logger)
 
 
 def test_vote(base_model, test_dataloader, epoch, val_writer, args, config, logger=None, times=10):

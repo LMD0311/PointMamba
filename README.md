@@ -25,6 +25,7 @@
 
 ## 📣 News
 
+- **[01/Apr/2024]** ScanObjectNN with further data augmentation is now available, check it out!
 - **[16/Mar/2024]** The configurations and checkpoints for ModelNet40 are now accessible, check it out!
 - **[05/Mar/2024]** Our paper **DAPT ([github](https://github.com/LMD0311/DAPT))** has been accepted by **CVPR 2024**! 🥳🥳🥳 Check it out and give it a star 🌟!
 
@@ -47,9 +48,14 @@ Transformers have become one of the foundational architectures in point cloud an
 | Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) |  |                                                              | N.A. | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/pretrain.pth) |
 | Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | 92.4% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/modelnet_scratch.pth) | 93.6% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/modelnet_pretrain.pth) |
 | Classification | ScanObjectNN | [finetune_scan_objbg.yaml](./cfgs/finetune_scan_objbg.yaml) | 88.30% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_objbg_scratch.pth) | 90.71% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_objbg_pretrain.pth) |
+| Classification* | ScanObjectNN | [finetune_scan_objbg.yaml](./cfgs/finetune_scan_objbg.yaml) | \ | \ | 93.29% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_objbg_pretrain2.pth) |
 | Classification | ScanObjectNN | [finetune_scan_objonly.yaml](./cfgs/finetune_scan_objonly.yaml) | 87.78% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_objonly_scratch.pth) | 88.47% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_objonly_pretrain.pth) |
+| Classification* | ScanObjectNN | [finetune_scan_objonly.yaml](./cfgs/finetune_scan_objonly.yaml) | \ | \ | 91.91% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_objonly_pretrain2.pth) |
 | Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | 82.48% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_hardest_scratch.pth) | 84.87% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_hardest_pretrain.pth) |
+| Classification* | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | \ | \ | 88.17% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/scan_hardest_pretrain2.pth) |
 | Part Segmentation | ShapeNetPart | [part segmentation](./part_segmentation) | 85.8% mIoU | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/part_seg_scratch.pth) | 86.0% mIoU | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/part_seg_pretrain.pth) |
+
+> \* indicates further using simple rotational augmentation for training.
 
 ## Getting Started
 
@@ -65,6 +71,10 @@ This codebase was tested with the following environment configurations. It may w
 
 We recommend using Anaconda for the installation process:
 ```shell
+# Clone the repository
+$ git clone https://github.com/LMD0311/PointMamba.git
+$ cd PointMamba
+
 # Create virtual env and install PyTorch
 $ conda create -n pointmamba python=3.9
 $ conda activate pointmamba
@@ -96,44 +106,40 @@ See [DATASET.md](./DATASET.md) for details.
 
 #### Pre-train
 
-```
+```shell
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/pretrain.yaml --exp_name <name>
 ```
 #### Classification on ModelNet40
 
-Training from scratch.
-```
+```shell
+# Training from scratch.
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --scratch_model --config cfgs/finetune_modelnet.yaml --exp_name <name>
-```
-Training from pre-training.
-```
+
+# Training from pre-training.
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --finetune_model --config cfgs/finetune_modelnet.yaml --ckpts <path/to/pre-trained/model> --exp_name <name>
 ```
-
 #### Classification on ScanObjectNN
 
-Training from scratch.
-```
+```shell
+# Training from scratch.
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --scratch_model --config cfgs/finetune_scan_objbg.yaml --exp_name <name>
-```
-Training from pre-training.
-```
+
+# Training from pre-training.
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --finetune_model --config cfgs/finetune_scan_objbg.yaml --ckpts <path/to/pre-trained/model> --exp_name <name>
 ```
-
 #### Part Segmentation on ShapeNetPart
 
 Training from scratch.
-```
+```shell
 cd part_segmentation
+# Training from scratch.
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --log_dir <name>
-```
-Training from pre-training.
-```
-cd part_segmentation
+
+# Training from pre-training.
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --ckpts <path/to/pre-trained/model> --log_dir <name>
 ```
 ## To Do
+
 - [x] Release code.
 - [x] Release checkpoints.
 - [x] ModelNet40.
