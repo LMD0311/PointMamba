@@ -28,6 +28,7 @@
 - **[01/Apr/2024]** ScanObjectNN with further data augmentation is now available, check it out!
 - **[16/Mar/2024]** The configurations and checkpoints for ModelNet40 are now accessible, check it out!
 - **[05/Mar/2024]** Our paper **DAPT ([github](https://github.com/LMD0311/DAPT))** has been accepted by **CVPR 2024**! 🥳🥳🥳 Check it out and give it a star 🌟!
+- **[16/Feb/2024]** Release the [paper](https://arxiv.org/abs/2402.10739).
 
 ## Abstract
 
@@ -36,14 +37,18 @@ Transformers have become one of the foundational architectures in point cloud an
 ## Overview
 
 <div  align="center">    
- <img src="./figure/pipeline.png" width = "999"  align=center />
+ <img src="./figure/pipeline.png" width = "888"  align=center />
 </div>
 
 
 
 ## Main Results
 
-| Task | Dataset | Config | Acc.(Scratch) | Download (Scratch) | Acc.(pre-train) | Download (Fine-tune) |
+<div  align="center">    
+ <img src="./figure/scanobj.png" width = "777"  align=center />
+</div>
+
+| Task | Dataset | Config | Acc.(Scratch) | Download (Scratch) | Acc.(pretrain) | Download (Finetune) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) |  |                                                              | N.A. | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/pretrain.pth) |
 | Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | 92.4% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/modelnet_scratch.pth) | 93.6% | [here](https://github.com/LMD0311/PointMamba/releases/download/ckpts/modelnet_pretrain.pth) |
@@ -59,85 +64,14 @@ Transformers have become one of the foundational architectures in point cloud an
 
 ## Getting Started
 
-### Environment
-
-This codebase was tested with the following environment configurations. It may work with other versions.
-- Ubuntu 20.04
-- CUDA 11.7
-- Python 3.9
-- PyTorch 1.13.1 + cu117
-
-### Installation
-
-We recommend using Anaconda for the installation process:
-```shell
-# Clone the repository
-$ git clone https://github.com/LMD0311/PointMamba.git
-$ cd PointMamba
-
-# Create virtual env and install PyTorch
-$ conda create -n pointmamba python=3.9
-$ conda activate pointmamba
-(pointmamba) $ pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
-
-# Install basic required packages
-(pointmamba) $ pip install -r requirements.txt
-
-# Chamfer Distance & emd
-(pointmamba) $ cd ./extensions/chamfer_dist && python setup.py install --user
-(pointmamba) $ cd ./extensions/emd && python setup.py install --user
-
-# PointNet++
-(pointmamba) $ pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
-
-# GPU kNN
-(pointmamba) $ pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
-
-# Mamba
-(pointmamba) $ pip install causal-conv1d==1.1.1
-(pointmamba) $ pip install mamba-ssm==1.1.1
-```
-
 ### Datasets
 
 See [DATASET.md](./DATASET.md) for details.
 
 ### Usage
 
-#### Pre-train
+See [USAGE.md](./USAGE.md) for details.
 
-```shell
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/pretrain.yaml --exp_name <name>
-```
-#### Classification on ModelNet40
-
-```shell
-# Training from scratch.
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --scratch_model --config cfgs/finetune_modelnet.yaml --exp_name <name>
-
-# Training from pre-training.
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --finetune_model --config cfgs/finetune_modelnet.yaml --ckpts <path/to/pre-trained/model> --exp_name <name>
-```
-#### Classification on ScanObjectNN
-
-```shell
-# Training from scratch.
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --scratch_model --config cfgs/finetune_scan_objbg.yaml --exp_name <name>
-
-# Training from pre-training.
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --finetune_model --config cfgs/finetune_scan_objbg.yaml --ckpts <path/to/pre-trained/model> --exp_name <name>
-```
-#### Part Segmentation on ShapeNetPart
-
-Training from scratch.
-```shell
-cd part_segmentation
-# Training from scratch.
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --log_dir <name>
-
-# Training from pre-training.
-CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --ckpts <path/to/pre-trained/model> --log_dir <name>
-```
 ## To Do
 
 - [x] Release code.
