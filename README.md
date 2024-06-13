@@ -26,7 +26,7 @@
 
 ## 📣 News
 
-- **[30/May/2024]** **Update!** We update the architecture and performance. Please check our **latest paper** and compare it with the new results. Code and weight will be released soon.
+- **[30/May/2024]** **Update!** We update the architecture and performance. Please check our **latest paper** and compare it with the **new results**. **Code and weight will be updated soon**.
 - **[01/Apr/2024]** ScanObjectNN with further data augmentation is now available, check it out!
 - **[16/Mar/2024]** The configurations and checkpoints for ModelNet40 are now accessible, check it out!
 - **[05/Mar/2024]** Our paper **DAPT ([github](https://github.com/LMD0311/DAPT))** has been accepted by **CVPR 2024**! 🥳🥳🥳 Check it out and give it a star 🌟!
@@ -48,7 +48,9 @@ Transformers have become one of the foundational architectures in point cloud an
 <div  align="center">    
  <img src="./figure/scanobj.png" width = "888"  align=center />
 </div>
+---
 
+- The table will be updated once the code for the latest version release is ready.
 
 | Task | Dataset | Config | Acc.(Scratch) | Download (Scratch) | Acc.(pretrain) | Download (Finetune) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
