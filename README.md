@@ -48,9 +48,8 @@ Transformers have become one of the foundational architectures in point cloud an
 <div  align="center">    
  <img src="./figure/scanobj.png" width = "888"  align=center />
 </div>
----
 
-- The table will be updated once the code for the latest version release is ready.
+- The table below will be updated once the code for the latest version release is ready.
 
 | Task | Dataset | Config | Acc.(Scratch) | Download (Scratch) | Acc.(pretrain) | Download (Finetune) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
