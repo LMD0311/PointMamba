@@ -91,10 +91,10 @@ This project is based on Point-BERT ([paper](https://arxiv.org/abs/2111.14819), 
 
 If you find this repository useful in your research, please consider giving a star ⭐ and a citation
 ```bibtex
-@article{liang2024pointmamba,
+@inproceedings{liang2024pointmamba,
       title={PointMamba: A Simple State Space Model for Point Cloud Analysis}, 
-      author={Dingkang Liang and Xin Zhou and Wei Xu and Xingkui Zhu and Zhikang Zou and Xiaoqing Ye and Xiao Tan and Xiang Bai},
-      journal={arXiv preprint arXiv:2402.10739},
+      author={Liang, Dingkang and Zhou, Xin and Xu, Wei and Zhu, Xingkui and Zou, Zhikang and Ye, Xiaoqing and Tan, Xiao and Bai, Xiang},
+      booktitle={Advances in Neural Information Processing Systems},
       year={2024}
 }
 ```
