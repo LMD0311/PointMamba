@@ -26,8 +26,9 @@
 
 ## 📣 News
 
+- **[12/Mar/2025]** Update the code. The earlier version is available [here](https://github.com/LMD0311/PointMamba/tree/old).
 - **[11/Oct/2024]** 🚀 Check out our latest work **[PointGST](https://github.com/jerryfeng2003/PointGST)** which achieves **99.48%**, **97.76%**, and **96.18%** overall accuracy on the ScanObjNN OBJ_BG, OBJ_OBLY, and PB_T50_RS datasets, respectively.
-- **[26/Sept/2024]** PointMamba is accepted to **NeurIPS 2024**! 🥳🥳🥳
+- **[26/Sep/2024]** PointMamba is accepted to **NeurIPS 2024**! 🥳🥳🥳
 - **[30/May/2024]** **Update!** We update the architecture and performance. Please check our **latest paper** and compare it with the **new results**. **Code and weight will be updated soon**.
 - **[01/Apr/2024]** ScanObjectNN with further data augmentation is now available, check it out!
 - **[16/Mar/2024]** The configurations and checkpoints for ModelNet40 are now accessible, check it out!
